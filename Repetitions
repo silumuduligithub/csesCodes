@@ -1,0 +1,30 @@
+import java.util.*;
+public class Main{
+	public static int repetations(String str){
+		if(str.length() == 0)return 0;
+		int include = 0, exclude = 0;
+		int ans = 0;
+		Set<Character> set = new HashSet<>();
+		while(include < str.length()){
+			if(set.size() == 0){
+				set.add(str.charAt(include));
+			}
+			else{
+				if(set.contains(str.charAt(include)) == false){
+					ans = Math.max(ans, include - exclude);
+					exclude = include;
+					set = new HashSet<>();
+				}
+			}
+			set.add(str.charAt(include));
+			include++;
+		}
+		if(set.contains(str.charAt(include - 1))) ans = Math.max(ans, include - exclude);
+		return ans == 0 && include == str.length() ? str.length() : ans;
+	}
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String str = sc.nextLine();
+		System.out.println(repetations(str));
+	}
+}
