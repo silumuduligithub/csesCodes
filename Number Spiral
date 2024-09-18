@@ -1,0 +1,36 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    long t;
+    cin >> t; // Read number of test cases
+
+    while (t-- > 0) {
+        long row, col;
+        cin >> row >> col; // Read row and column
+
+        if (row > col) {
+            long totalShells = (row % 2 == 0) ? (row * row) : ((row - 1) * (row - 1)) + 1;
+            if (row % 2 == 0) {
+                totalShells -= col;
+                totalShells++;
+            } else {
+                totalShells += col;
+                totalShells--;
+            }
+            cout << totalShells << endl; // Output the result
+        } else {
+            long totalShells = (col % 2 == 0) ? ((col - 1) * (col - 1)) + 1 : (col * col);
+            if (col % 2 == 0) {
+                totalShells += row;
+                totalShells--;
+            } else {
+                totalShells -= row;
+                totalShells++;
+            }
+            cout << totalShells << endl; // Output the result
+        }
+    }
+    return 0;
+}
