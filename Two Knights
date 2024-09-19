@@ -1,0 +1,21 @@
+import java.math.BigInteger;
+import java.util.Scanner;
+
+/**
+ * twoKnights
+ */
+public class twoKnights {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        long n = sc.nextLong();
+        for (long i = 1; i <= n; i++) {
+            BigInteger canPlace = (BigInteger.valueOf(i).multiply(BigInteger.valueOf(i))
+                    .multiply((BigInteger.valueOf(i).multiply(BigInteger.valueOf(i)).subtract(BigInteger.valueOf(1)))))
+                    .divide(BigInteger.valueOf(2));
+            BigInteger cannotPlace = BigInteger.valueOf(4)
+                    .multiply(BigInteger.valueOf(i - 1).multiply(BigInteger.valueOf(i - 2)));
+            System.out.println(canPlace.subtract(cannotPlace));
+        }
+    }
+}
