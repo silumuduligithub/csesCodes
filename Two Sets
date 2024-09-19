@@ -1,0 +1,41 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() 
+{
+    long n;
+    cin >> n;
+
+    if ((n * (n + 1)) / 2 % 2 != 0)
+    {
+        cout << "NO" << endl;
+        return 0;
+    }
+
+    long target = (n * (n + 1)) / 4;
+    vector<long> v1, v2;
+
+    for (long i = n; i >= 1; i--) {
+        if (target >= i) {
+            target -= i;
+            v1.push_back(i);
+        } else {
+            v2.push_back(i);
+        }
+    }
+
+    cout << "YES" << endl;
+    cout << v1.size() << endl;
+    
+    for (long v : v1) {
+        cout << v << " ";
+    }
+    cout <<"\n"<<v2.size()<<endl;
+
+    for (long v : v2) {
+        cout << v << " ";
+    }
+    
+    return 0;
+}
