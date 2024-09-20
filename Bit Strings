@@ -1,0 +1,13 @@
+
+import java.math.BigInteger;
+import java.util.Scanner;
+public class bitstrings {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();    
+        long mod = (long)(1e9 + 7);
+        BigInteger ans = BigInteger.valueOf(2l).pow(n);
+        System.out.println(ans.mod(BigInteger.valueOf(mod)));
+    }
+    
+}
